@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4295512925FCE8FA00C54C09 /* MSPeekCollectionViewDelegateImplementation in Frameworks */ = {isa = PBXBuildFile; productRef = 4295512825FCE8FA00C54C09 /* MSPeekCollectionViewDelegateImplementation */; };
 		42A2916925EFD4880040CF75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A2916825EFD4880040CF75 /* AppDelegate.swift */; };
 		42A2916B25EFD4880040CF75 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A2916A25EFD4880040CF75 /* SceneDelegate.swift */; };
 		42A2916D25EFD4880040CF75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A2916C25EFD4880040CF75 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 		42A291B825EFE6A20040CF75 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A291B725EFE6A20040CF75 /* TabBarController.swift */; };
 		42A291BD25EFE6B80040CF75 /* ShopCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A291BC25EFE6B80040CF75 /* ShopCoordinator.swift */; };
 		42A291C225EFE6DC0040CF75 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A291C125EFE6DC0040CF75 /* ShopViewController.swift */; };
+		42CEACD32610E61F0097B3EA /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CEACD22610E61F0097B3EA /* UICollectionViewExtension.swift */; };
 		42F56BB225F19BFE00E5D521 /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F56BB125F19BFE00E5D521 /* ColorExtention.swift */; };
 		42F8952B25F3E87700166DC5 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8952A25F3E87700166DC5 /* ImageExtension.swift */; };
 		42F8953025F3F0C200166DC5 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F8952F25F3F0C200166DC5 /* ExploreViewController.swift */; };
@@ -69,6 +71,7 @@
 		42A291B725EFE6A20040CF75 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		42A291BC25EFE6B80040CF75 /* ShopCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCoordinator.swift; sourceTree = "<group>"; };
 		42A291C125EFE6DC0040CF75 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		42CEACD22610E61F0097B3EA /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		42F56BB125F19BFE00E5D521 /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
 		42F8952A25F3E87700166DC5 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		42F8952F25F3F0C200166DC5 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4295512925FCE8FA00C54C09 /* MSPeekCollectionViewDelegateImplementation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +213,7 @@
 			children = (
 				42F56BB125F19BFE00E5D521 /* ColorExtention.swift */,
 				42F8952A25F3E87700166DC5 /* ImageExtension.swift */,
+				42CEACD22610E61F0097B3EA /* UICollectionViewExtension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -229,6 +234,9 @@
 			dependencies = (
 			);
 			name = GroceriesApp;
+			packageProductDependencies = (
+				4295512825FCE8FA00C54C09 /* MSPeekCollectionViewDelegateImplementation */,
+			);
 			productName = GroceriesApp;
 			productReference = 42A2916525EFD4880040CF75 /* GroceriesApp.app */;
 			productType = "com.apple.product-type.application";
@@ -300,6 +308,9 @@
 				Base,
 			);
 			mainGroup = 42A2915C25EFD4880040CF75;
+			packageReferences = (
+				4295512725FCE8FA00C54C09 /* XCRemoteSwiftPackageReference "MSPeekCollectionViewDelegateImplementation" */,
+			);
 			productRefGroup = 42A2916625EFD4880040CF75 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -347,6 +358,7 @@
 				42A2919D25EFDD080040CF75 /* AppCoordinator.swift in Sources */,
 				42F8953F25F3F0F000166DC5 /* CartViewController.swift in Sources */,
 				42A291B825EFE6A20040CF75 /* TabBarController.swift in Sources */,
+				42CEACD32610E61F0097B3EA /* UICollectionViewExtension.swift in Sources */,
 				42F8952B25F3E87700166DC5 /* ImageExtension.swift in Sources */,
 				42A2916D25EFD4880040CF75 /* ViewController.swift in Sources */,
 				42A291B325EFE5290040CF75 /* TabBarCoordinator.swift in Sources */,
@@ -693,6 +705,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4295512725FCE8FA00C54C09 /* XCRemoteSwiftPackageReference "MSPeekCollectionViewDelegateImplementation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaherKSantina/MSPeekCollectionViewDelegateImplementation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4295512825FCE8FA00C54C09 /* MSPeekCollectionViewDelegateImplementation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4295512725FCE8FA00C54C09 /* XCRemoteSwiftPackageReference "MSPeekCollectionViewDelegateImplementation" */;
+			productName = MSPeekCollectionViewDelegateImplementation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 42A2915D25EFD4880040CF75 /* Project object */;
 }
