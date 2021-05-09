@@ -14,10 +14,11 @@ class ShopViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     var coordinator: Coordinator?
     
     
-    let colours: [UIColor] = [.red, .blue, .yellow, .purple]
+    private let colours: [UIColor] = [.red, .blue, .yellow, .purple]
+    private let headers: [String] = ["Exclusive Offer", "Best Selling"]
     
     private let cellId = "cellId"
-    let collectionViewHeaderReuseIdentifier = "MyHeaderClass"
+    private let collectionViewHeaderReuseIdentifier = "MyHeaderClass"
     private let advertisementCellId = "advertisementCellId"
     private var scrollView = UIScrollView()
     private lazy var advertisementCollectionView: UICollectionView = {
@@ -31,9 +32,9 @@ class ShopViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: collectionViewHeaderReuseIdentifier)
-
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         collectionView.dataSource = self
         return collectionView
     }()
@@ -42,6 +43,10 @@ class ShopViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setupUI()
     }
     
@@ -176,7 +181,7 @@ extension ShopViewController {
             layoutSize: footerHeaderSize,
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
-
+        
         section.boundarySupplementaryItems = [header]
         
         return section
@@ -203,7 +208,7 @@ extension ShopViewController: UICollectionViewDataSource {
             return 4
         }
         switch section {
-
+        
         case 0:
             return 3
         default:
@@ -215,7 +220,6 @@ extension ShopViewController: UICollectionViewDataSource {
         if collectionView == advertisementCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: advertisementCellId, for: indexPath)
             cell.backgroundColor = colours[indexPath.row]
-            
             cell.layer.cornerRadius = 8
             return cell
         }
@@ -228,8 +232,8 @@ extension ShopViewController: UICollectionViewDataSource {
     }
     
     
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -238,57 +242,78 @@ extension ShopViewController: UICollectionViewDataSource {
         
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: collectionViewHeaderReuseIdentifier, for: indexPath) as! MyHeaderFooterClass
-        
-            headerView.backgroundColor = UIColor.blue
-    
-        headerView.titleLabel.text = "Header"
+            headerView.titleLabel.text = headers[indexPath.section]
+            
             return headerView
-        
+            
         default:
             assert(false, "Unexpected element kind")
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-       print("referenceSizeForHeaderInSection")
-       return CGSize(width: collectionView.frame.width, height: 30.0)
-   }
+        print("referenceSizeForHeaderInSection")
+        return CGSize(width: collectionView.frame.width, height: 30.0)
+    }
     
     func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-    
+        
         let layoutAttributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
-    
+        
         if elementKind == UICollectionView.elementKindSectionHeader {
-            layoutAttributes.frame = CGRect(x: 0.0, y: 0.0, width: 200, height: 50) //  contentWidth, height: headerHeight)
-            //            layoutAttributes.zIndex = Int.max - 3
+            layoutAttributes.frame = CGRect(x: 0.0, y: 0.0, width: 200, height: 50)
         }
-    
+        
         return layoutAttributes
     }
 }
 
 
+
+
 class MyHeaderFooterClass: UICollectionReusableView {
-
-    let titleLabel = UILabel()
-
+    
+    let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.font = .systemFont(ofSize: 24, weight: .semibold)
+        titleLabel.numberOfLines = 0
+        return titleLabel
+    }()
+    
+    let seeAllButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("See all", for: .normal)
+        button.setTitleColor(.systemGreen, for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.purple
-    
-        // Customize here
+        self.backgroundColor = .systemBackground
         addSubview(titleLabel)
+        addSubview(seeAllButton)
         print("MyHeaderFooterClass")
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    
+        
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.sizeToFit()
-        titleLabel.frame.origin = CGPoint(x: 15, y: 10)
+        titleLabel.frame = CGRect(
+            x: 25,
+            y: 0,
+            width: frame.size.width / 1.5,
+            height: frame.size.height
+        )
+        seeAllButton.sizeToFit()
+        seeAllButton.frame = CGRect(
+            x: frame.maxX - frame.size.width / 4,
+            y: 0,
+            width: frame.size.width / 4,
+            height: frame.size.height)
     }
 }
